@@ -1,6 +1,6 @@
-package DataAccess;
+package adamSmithComp373Proj1.DAL;
 import java.sql.*;
-import java.util.stream.IntStream;  
+import io.github.cdimascio.dotenv.Dotenv;
 
 
 public class FacilityDAO {
@@ -14,7 +14,7 @@ public class FacilityDAO {
     public static Integer getFacilityID(String Name){
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", DBUser, DBPass);  
             Statement stmt=con.createStatement();  
             
             String query = "select * from facilities where Name = " + "'" + Name + "'";
