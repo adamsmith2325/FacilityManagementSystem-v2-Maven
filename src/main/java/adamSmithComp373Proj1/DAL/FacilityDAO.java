@@ -12,7 +12,11 @@ public class FacilityDAO {
     
 
 
-    public static Integer getFacilityID(String Name){
+
+    public static ArrayList<String> getFacilityDetails(String Name){
+        
+        ArrayList<String> facilityDetails = new ArrayList<String>();
+        
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
@@ -20,42 +24,20 @@ public class FacilityDAO {
             
             String query = "select * from facilities where Name = " + "'" + Name + "'";
             
-            ResultSet rs=stmt.executeQuery(query);  
-            Integer facilityID = null;
-            while(rs.next())  
-                facilityID = rs.getInt(1);  
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next())   
+                facilityDetails.add(rs.getString(1)); //Grabbing the ID from the database
+                facilityDetails.add(rs.getString(2)); //Grabbing the name from the database
             con.close();   
-            return facilityID;
+            return facilityDetails;
 
         }catch(Exception e){ 
-            System.out.println(e);
-            return 999999;
+            facilityDetails.add("Error when accessing database");
+            return facilityDetails;
             }  
         }
 
-    
 
-
-        public static String getFacilityName(Integer Id){
-            try{  
-                Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
-                Statement stmt=con.createStatement();  
-                
-                String query = "select * from facilities where idFacilities = " + Id;
-                
-                ResultSet rs=stmt.executeQuery(query);  
-                String facilityName = null;
-                while(rs.next())  
-                    facilityName = rs.getString(2);  
-                con.close();   
-                return facilityName;
-    
-            }catch(Exception e){ 
-                System.out.println(e);
-                return e.toString();
-                }  
-            }
 
 
             public static ArrayList<String> listFacilities(){
@@ -85,6 +67,11 @@ public class FacilityDAO {
 
 
 
+
+
+
+
+                
         public static void main(String args[]){
             System.out.println(getFacilityID("Test 2"));
             System.out.println(getFacilityName(3));
