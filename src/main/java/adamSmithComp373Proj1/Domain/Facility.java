@@ -1,5 +1,4 @@
-package Domain;
-
+package adamSmithComp373Proj1.Domain;
 import adamSmithComp373Proj1.DAL.FacilityDAO;
 import java.util.ArrayList;
 
@@ -17,7 +16,7 @@ public class Facility {
     }
 
     public Object getFacilityInformation(){
-
+        
     }
 
     public Object requestAvailableCapacity(){
@@ -25,12 +24,14 @@ public class Facility {
     }
 
     public Object addNewFacility(){
-
+        
     }
 
     public Object removeFacility(){
         
     }
 
+
 }
+
 

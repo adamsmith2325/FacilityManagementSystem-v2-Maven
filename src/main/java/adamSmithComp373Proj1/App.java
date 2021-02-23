@@ -1,8 +1,7 @@
 package adamSmithComp373Proj1;
 
-/**
- * Hello world!
- */
+import adamSmithComp373Proj1.Domain.*;
+
 public final class App {
     private App() {
     }
@@ -12,6 +11,11 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
+       Facility facility = new Facility();
+        
         System.out.println("Hello World!");
+        System.out.println(facility.listFacilities());
+
+        
     }
 }
