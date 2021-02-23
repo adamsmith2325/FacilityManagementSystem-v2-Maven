@@ -12,9 +12,10 @@ public final class App {
      */
     public static void main(String[] args) {
        Facility facility = new Facility();
-        
+
         System.out.println("Hello World!");
         System.out.println(facility.listFacilities());
+        System.out.println(facility.getFacilityInformation(3));
 
         
     }

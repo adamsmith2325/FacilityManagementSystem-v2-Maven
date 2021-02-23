@@ -13,7 +13,7 @@ public class FacilityDAO {
 
 
 
-    public static ArrayList<String> getFacilityDetails(String Name){
+    public static ArrayList<String> getFacilityDetails(Integer ID){
         
         ArrayList<String> facilityDetails = new ArrayList<String>();
         
@@ -22,12 +22,13 @@ public class FacilityDAO {
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
             Statement stmt=con.createStatement();  
             
-            String query = "select * from facilities where Name = " + "'" + Name + "'";
+            String query = "select * from facilities where idFacilities = "+ ID; 
             
             ResultSet rs=stmt.executeQuery(query);
-            while(rs.next())   
+            while(rs.next()){
                 facilityDetails.add(rs.getString(1)); //Grabbing the ID from the database
                 facilityDetails.add(rs.getString(2)); //Grabbing the name from the database
+            }
             con.close();   
             return facilityDetails;
 
@@ -73,8 +74,7 @@ public class FacilityDAO {
 
                 
         public static void main(String args[]){
-            System.out.println(getFacilityID("Test 2"));
-            System.out.println(getFacilityName(3));
+            System.out.println(getFacilityDetails(1));
         }
 
     }
