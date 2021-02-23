@@ -1,13 +1,19 @@
 package Domain;
 
+import adamSmithComp373Proj1.DAL.FacilityDAO;
+import java.util.ArrayList;
+
 public class Facility {
  
+    Integer id;
+    String Name;
 
 
 
-
-    public Object listFacilities(){
-    
+    public ArrayList<String> listFacilities(){
+        FacilityDAO Connection  = new FacilityDAO();
+        ArrayList<String> facilitiesList = Connection.listFacilities();
+        return facilitiesList;
     }
 
     public Object getFacilityInformation(){

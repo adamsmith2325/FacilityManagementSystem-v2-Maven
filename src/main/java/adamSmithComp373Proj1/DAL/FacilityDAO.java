@@ -1,6 +1,7 @@
 package adamSmithComp373Proj1.DAL;
 import java.sql.*;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.ArrayList;
 
 
 public class FacilityDAO {
@@ -14,7 +15,7 @@ public class FacilityDAO {
     public static Integer getFacilityID(String Name){
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", DBUser, DBPass);  
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
             Statement stmt=con.createStatement();  
             
             String query = "select * from facilities where Name = " + "'" + Name + "'";
@@ -38,7 +39,7 @@ public class FacilityDAO {
         public static String getFacilityName(Integer Id){
             try{  
                 Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", DBUser, DBPass);  
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                 Statement stmt=con.createStatement();  
                 
                 String query = "select * from facilities where idFacilities = " + Id;
@@ -55,6 +56,32 @@ public class FacilityDAO {
                 return e.toString();
                 }  
             }
+
+
+            public static ArrayList<String> listFacilities(){
+                
+                ArrayList<String> allFacilities = new ArrayList<String>();
+
+                try{  
+                    Class.forName("com.mysql.jdbc.Driver");  
+                    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                    Statement stmt=con.createStatement();  
+                    
+                    String query = "select * from facilities";
+                    
+                    ResultSet rs=stmt.executeQuery(query);  
+                    
+                    while(rs.next())  
+                        allFacilities.add(rs.getString(2));
+                    con.close();   
+                    return allFacilities;
+        
+                }catch(Exception e){ 
+                    allFacilities.add("Error");
+                    return allFacilities;
+                    }  
+                }
+
 
 
 
