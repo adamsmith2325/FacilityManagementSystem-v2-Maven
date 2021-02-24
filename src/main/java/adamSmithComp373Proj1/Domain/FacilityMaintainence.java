@@ -1,8 +1,16 @@
 package adamSmithComp373Proj1.Domain;
 
+enum RequestType {Repair, Cleaning, BrokenItem}
+
 public class FacilityMaintainence {
  
-    
+    private Integer RequestID;
+    private Facility facility;
+    private RequestType MainType;
+
+
+
+
 
 
 
