@@ -8,8 +8,11 @@ public class Facility {
  
     private Integer FacilityID;
     private String Name;
-    
+    private String Location;
+    private Integer phoneNumber;
+    private Integer numOfRooms;
     private FacilityDAO Connection  = new FacilityDAO();
+
 
 
     public ArrayList<String> listFacilities(){
@@ -34,7 +37,9 @@ public class Facility {
         
     }
 
-
+    public String getName(){
+        return Connection.getName(this.FacilityID);
+    }
 }
 
 
