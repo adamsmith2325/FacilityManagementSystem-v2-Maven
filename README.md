@@ -18,3 +18,8 @@ Based on the specification provided for a Facility Management System:
 – Discover other objects that facilitate implementing responsibilities.
 
 – Make available all client interfaces/services specified in the specification document (Facility, Facility Use, and Facility Maintenance Client Interfaces).
+
+### Supporting Documents:
+ - Requirement - Facility Management System Specification Document.
+ - Object Modeling.
+ - A UML Modeling tool for documentation.
