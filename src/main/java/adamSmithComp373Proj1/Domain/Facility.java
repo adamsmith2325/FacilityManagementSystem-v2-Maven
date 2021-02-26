@@ -10,7 +10,7 @@ public class Facility {
     private Integer FacilityID;
     private String Name;
     private String Location;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private Integer numOfRooms;
     private FacilityDAO Connection  = new FacilityDAO();
     private ArrayList<Integer> OccupiedRoomsList;
@@ -41,7 +41,7 @@ public class Facility {
         return availableRooms;
     }
 
-    public void addNewFacility(String addName, String addLocation, Integer addPhone, Integer addNumOfRooms){
+    public void addNewFacility(String addName, String addLocation, String addPhone, Integer addNumOfRooms){
         Connection.addNewFacility(addName, addLocation, addPhone, addNumOfRooms);
         System.out.println(addName + " has been added to the list of facilities");
     }
