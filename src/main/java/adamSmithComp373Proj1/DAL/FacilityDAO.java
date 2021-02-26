@@ -66,7 +66,7 @@ public class FacilityDAO {
 
                 }
             
-                public Object addNewFacility(){
+                public void addNewFacility(){
                     
                 }
             
