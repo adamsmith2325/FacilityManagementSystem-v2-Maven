@@ -25,6 +25,9 @@ public class FacilityDAO {
             while(rs.next()){
                 facilityDetails.add(rs.getString(1)); //Grabbing the ID from the database
                 facilityDetails.add(rs.getString(2)); //Grabbing the name from the database
+                facilityDetails.add(rs.getString(3)); //Grabbing the Location from the database
+                facilityDetails.add(rs.getString(4)); //Grabbing the phone from the database
+                facilityDetails.add(rs.getString(5)); //Grabbing the number of rooms from the database
             }
             
             return facilityDetails;
@@ -52,7 +55,7 @@ public class FacilityDAO {
                     ResultSet rs=stmt.executeQuery(query);  
                     
                     while(rs.next())  
-                        allFacilities.add(rs.getString(2));
+                        allFacilities.add(rs.getString(2) + " - id: " + rs.getInt(1));
                     con.close();   
                     return allFacilities;
         
@@ -60,10 +63,6 @@ public class FacilityDAO {
                     allFacilities.add("Error");
                     return allFacilities;
                     }  
-                }
-
-                public Object requestAvailableCapacity(){
-
                 }
             
                 public static void addNewFacility(String name, String location, String phone, Integer numOfRooms){
@@ -85,47 +84,160 @@ public class FacilityDAO {
                     }
                 }
             
-                public Object removeFacility(){
-                    
+                public void removeFacility(Integer RemovalID){
+                try{ 
+                    Class.forName("com.mysql.jdbc.Driver");  
+                    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                    Statement stmt=con.createStatement();      
+                    String query = "DELETE FROM facilities WHERE idFacilities = " + RemovalID;
+                    Integer rs=stmt.executeUpdate(query);
+                    System.out.println("Facility " + RemovalID + " Deleted");
+                }catch(Exception e){ 
+                    System.out.println(e.toString());
+                }
                 }
             
                 
                 //Get functionalities
                 
-                public String getName(){
-                    
-                }
+                public String getName(Integer SearchID){
+                    String returnString ="";
+                    try{              
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();
+                        String query = "select * from facilities where idFacilities = "+ SearchID; 
+                        
+                        ResultSet rs=stmt.executeQuery(query);
+                        while(rs.next()){
+                            returnString = rs.getString(2);
+                        }
+                        
+                        }catch(Exception e){ 
+                            returnString = e.toString();
+                        }
+                        
+                        return returnString;
+                        
+                    }
             
-                public String getLocation(){
-                   
-                }
+                public String getLocation(Integer SearchID){
+                    String returnString ="";
+                    try{              
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();
+                        String query = "select * from facilities where idFacilities = "+ SearchID; 
+                        
+                        ResultSet rs=stmt.executeQuery(query);
+                        while(rs.next()){
+                            returnString = rs.getString(3);
+                        }
+                        
+                        }catch(Exception e){ 
+                            returnString = e.toString();
+                        }
+                        
+                        return returnString;
+                        
+                    }
             
-                public Integer getPhone(){
+                public String getPhone(Integer SearchID){
+                        String returnString ="";
+                    try{              
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();
+                        String query = "select * from facilities where idFacilities = "+ SearchID; 
+                        
+                        ResultSet rs=stmt.executeQuery(query);
+                        while(rs.next()){
+                            returnString = rs.getString(4);
+                        }
+                        
+                        }catch(Exception e){ 
+                            returnString = e.toString();
+                        }
+                        
+                        return returnString;
+                        
+                    }
             
-                }
-            
-                public Integer getNumberOfRooms(){
-            
-                }
+                public Integer getNumberOfRooms(Integer SearchID){
+                    Integer returnInt = null;
+                    try{              
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();
+                        String query = "select * from facilities where idFacilities = "+ SearchID; 
+                        
+                        ResultSet rs=stmt.executeQuery(query);
+                        while(rs.next()){
+                            returnInt = rs.getInt(5);
+                        }
+                        
+                        }catch(Exception e){ 
+                            returnInt = 99999999;
+                        }
+                        
+                        return returnInt;
+                        
+                    }
             
             
             
                 //Set functionalities
             
-                public void setName(){
-            
+                public static void setName(Integer Id, String newName){
+                    try{ 
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();      
+                        String query = "UPDATE facilities " + "SET Name = " + "'" +  newName + "'" + " WHERE idFacilities = " + Id;
+                        Integer rs=stmt.executeUpdate(query);
+                        System.out.println("Facility " + Id + "'s name has been updated");
+                    }catch(Exception e){ 
+                        System.out.println(e.toString());
+                    }
                 }
             
-                public void setLocation(){
-            
+                public static void setLocation(Integer Id, String newLocation){
+                    try{ 
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();      
+                        String query = "UPDATE facilities " + "SET Location = " + "'" +  newLocation + "'" + " WHERE idFacilities = " + Id;
+                        Integer rs=stmt.executeUpdate(query);
+                        System.out.println("Facility " + Id + "'s location has been updated");
+                    }catch(Exception e){ 
+                        System.out.println(e.toString());
+                    }
                 }
             
-                public void setPhone(){
-            
+                public static void setPhone(Integer Id, String newPhone){
+                    try{ 
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();      
+                        String query = "UPDATE facilities " + "SET phoneNumber = " + "'" +  newPhone + "'" + " WHERE idFacilities = " + Id;
+                        Integer rs=stmt.executeUpdate(query);
+                        System.out.println("Facility " + Id + "'s phone number has been updated");
+                    }catch(Exception e){ 
+                        System.out.println(e.toString());
+                    }
                 }
             
-                public void setNumberOfRooms(){
-                    
+                public static void setNumberOfRooms(Integer Id, Integer newRoomsNum){
+                    try{ 
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();      
+                        String query = "UPDATE facilities " + "SET numOfRooms = " + "'" +  newRoomsNum + "'" + " WHERE idFacilities = " + Id;
+                        Integer rs=stmt.executeUpdate(query);
+                        System.out.println("Facility " + Id + "'s number of rooms has been updated");
+                    }catch(Exception e){ 
+                        System.out.println(e.toString());
+                    }
                 }
 
 
@@ -137,6 +249,12 @@ public class FacilityDAO {
         public static void main(String args[]){
             //System.out.println(getFacilityDetails(1));
             //addNewFacility("Adam Insert Test", "Address", "4062039222", 10);
+            //System.out.println(getFacilityDetails(7));
+            //setName(3, "Set Name Test 2");
+            //setLocation(3, "1357 W Touhy Avenue, Apartment 1S, Chicago, IL 60626");
+            //setPhone(3, "9062039222");
+            //setNumberOfRooms(3, 2);
+            //System.out.println(listFacilities());
         }
 
     }

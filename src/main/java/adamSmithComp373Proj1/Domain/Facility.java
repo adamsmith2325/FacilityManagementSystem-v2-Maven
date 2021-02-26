@@ -7,13 +7,14 @@ import java.util.ArrayList;
 public class Facility {
  
     //Required Class Attributes
-    private Integer FacilityID;
-    private String Name;
-    private String Location;
-    private String phoneNumber;
-    private Integer numOfRooms;
     private FacilityDAO Connection  = new FacilityDAO();
-    private ArrayList<Integer> OccupiedRoomsList;
+    private Integer FacilityID;
+    private String Name = Connection.getName(this.FacilityID);
+    private String Location = Connection.getLocation(this.FacilityID);
+    private String phoneNumber = Connection.getPhone(this.FacilityID);
+    private Integer numOfRooms = Connection.getNumberOfRooms(this.FacilityID);;
+   
+    private ArrayList<Integer> OccupiedRoomsList = ;
 
 
     //Misc. Relevant Methods
@@ -46,58 +47,61 @@ public class Facility {
         System.out.println(addName + " has been added to the list of facilities");
     }
 
-    public void removeFacility(Integer RemovalID){
-        Connection.removeFacility(RemovalID);
-        System.out.println("Facility Number: " + RemovalID + " has been added to the list of facilities");
+    public void removeFacility(){
+        Connection.removeFacility(this.FacilityID);
     }
 
     
     //Get functionalities
-    
+    public Integer getID(){
+       return this.FacilityID;
+    }
+
+
     public String getName(){
-        return Connection.getName(this.FacilityID);
+        return this.Name;
     }
 
     public String getLocation(){
-        return Connection.getLocation(this.FacilityID);
+        return this.Location;
     }
 
-    public Integer getPhone(){
-        return Connection.getPhone(this.FacilityID);
+    public String getPhone(){
+        return this.phoneNumber;
     }
 
     public Integer getNumberOfRooms(){
-        return Connection.getNumberOfRooms(this.FacilityID);
+        return this.numOfRooms;
     }
 
 
 
     //Set functionalities
 
-    public void setName(){
-        return Connection.setName(this.FacilityID);
+    public void setName(String newName){
+        Connection.setName(this.FacilityID, newName);
     }
 
-    public void setLocation(){
-        return Connection.setLocation(this.FacilityID);
+    public void setLocation(String newLocation){
+        Connection.setLocation(this.FacilityID, newLocation);
     }
 
-    public void setPhone(){
-        return Connection.setPhone(this.FacilityID);
+    public void setPhone(String newPhone){
+        Connection.setPhone(this.FacilityID, newPhone);
     }
 
-    public void setNumberOfRooms(){
-        return Connection.setNumberOfRooms(this.FacilityID);
+    public void setNumberOfRooms(Integer newRoomsNum){
+        Connection.setNumberOfRooms(this.FacilityID,  newRoomsNum);
     }
 
 
     //Occupany Methods
 
     public void addFacilityUse(){
-        OccupiedRoomsList
+        //OccupiedRoomsList
     }
 
     public void voidFacilityUse(){
-        OccupiedRoomsList
+        //OccupiedRoomsList
     }
 }
