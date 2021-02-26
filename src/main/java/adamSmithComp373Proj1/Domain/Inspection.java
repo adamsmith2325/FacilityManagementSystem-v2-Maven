@@ -11,12 +11,16 @@ public class Inspection {
     private String Name = Conn.getName();
     private Type InsType = Conn.getType();
     private String Details = Conn.getDetails();
-    private Facility facility = Conn.getFacility();
+    private Integer facility = Conn.getFacility().getID();
     private Integer Room = Conn.getRoom();
     
 
 
     
+    public addInspection(){
+        
+    }
+
 
 
     public String getName(){
@@ -31,7 +35,7 @@ public class Inspection {
         return this.Details;
     }
 
-    public Facility getFacility(){
+    public Integer getFacility(){
         return this.facility;
     }
 

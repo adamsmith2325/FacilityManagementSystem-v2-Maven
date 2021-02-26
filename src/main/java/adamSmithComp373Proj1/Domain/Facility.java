@@ -14,7 +14,7 @@ public class Facility {
     private String phoneNumber = Connection.getPhone(this.FacilityID);
     private Integer numOfRooms = Connection.getNumberOfRooms(this.FacilityID);;
    
-    private ArrayList<Integer> OccupiedRoomsList;
+    private ArrayList<Integer> OccupiedRoomsList = ;
 
 
     //Misc. Relevant Methods
@@ -53,7 +53,11 @@ public class Facility {
 
     
     //Get functionalities
-    
+    public Integer getID(){
+       return this.FacilityID;
+    }
+
+
     public String getName(){
         return this.Name;
     }

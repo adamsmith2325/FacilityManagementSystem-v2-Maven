@@ -55,7 +55,7 @@ public class FacilityDAO {
                     ResultSet rs=stmt.executeQuery(query);  
                     
                     while(rs.next())  
-                        allFacilities.add(rs.getString(2));
+                        allFacilities.add(rs.getString(2) + " - id: " + rs.getInt(1));
                     con.close();   
                     return allFacilities;
         
@@ -254,6 +254,7 @@ public class FacilityDAO {
             //setLocation(3, "1357 W Touhy Avenue, Apartment 1S, Chicago, IL 60626");
             //setPhone(3, "9062039222");
             //setNumberOfRooms(3, 2);
+            //System.out.println(listFacilities());
         }
 
     }

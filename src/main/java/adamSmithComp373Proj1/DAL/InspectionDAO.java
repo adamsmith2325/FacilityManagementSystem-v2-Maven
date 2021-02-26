@@ -17,7 +17,7 @@ public class InspectionDAO {
         
     }
 
-    public Facility getFacility(){
+    public Integer getFacility(){
         
     }
 
