@@ -10,18 +10,15 @@ public class FacilityDAO {
     String  DBUser = dotenv.get("DATABASE_USERNAME");
     String  DBPass = dotenv.get("DATABASE_PASSWORD");
     
-
+    private static DBHelper DB = new DBHelper();
+    private static Statement stmt = DB.formConnection();
 
 
     public static ArrayList<String> getFacilityDetails(Integer ID){
         
         ArrayList<String> facilityDetails = new ArrayList<String>();
         
-        try{  
-            Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
-            Statement stmt=con.createStatement();  
-            
+        try{              
             String query = "select * from facilities where idFacilities = "+ ID; 
             
             ResultSet rs=stmt.executeQuery(query);
@@ -29,7 +26,7 @@ public class FacilityDAO {
                 facilityDetails.add(rs.getString(1)); //Grabbing the ID from the database
                 facilityDetails.add(rs.getString(2)); //Grabbing the name from the database
             }
-            con.close();   
+            
             return facilityDetails;
 
         }catch(Exception e){ 
@@ -65,7 +62,56 @@ public class FacilityDAO {
                     }  
                 }
 
+                public Object requestAvailableCapacity(){
 
+                }
+            
+                public Object addNewFacility(){
+                    
+                }
+            
+                public Object removeFacility(){
+                    
+                }
+            
+                
+                //Get functionalities
+                
+                public String getName(){
+                    
+                }
+            
+                public String getLocation(){
+                   
+                }
+            
+                public Integer getPhone(){
+            
+                }
+            
+                public Integer getNumberOfRooms(){
+            
+                }
+            
+            
+            
+                //Set functionalities
+            
+                public void setName(){
+            
+                }
+            
+                public void setLocation(){
+            
+                }
+            
+                public void setPhone(){
+            
+                }
+            
+                public void setNumberOfRooms(){
+                    
+                }
 
 
 
