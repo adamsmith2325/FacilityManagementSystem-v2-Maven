@@ -65,7 +65,56 @@ public class FacilityDAO {
                     }  
                 }
 
+                public Object requestAvailableCapacity(){
 
+                }
+            
+                public Object addNewFacility(){
+                    
+                }
+            
+                public Object removeFacility(){
+                    
+                }
+            
+                
+                //Get functionalities
+                
+                public String getName(){
+                    
+                }
+            
+                public String getLocation(){
+                   
+                }
+            
+                public Integer getPhone(){
+            
+                }
+            
+                public Integer getNumberOfRooms(){
+            
+                }
+            
+            
+            
+                //Set functionalities
+            
+                public void setName(){
+            
+                }
+            
+                public void setLocation(){
+            
+                }
+            
+                public void setPhone(){
+            
+                }
+            
+                public void setNumberOfRooms(){
+                    
+                }
 
 
 
