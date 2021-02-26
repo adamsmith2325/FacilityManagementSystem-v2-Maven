@@ -9,9 +9,6 @@ public class FacilityDAO {
     Dotenv dotenv = Dotenv.load();
     String  DBUser = dotenv.get("DATABASE_USERNAME");
     String  DBPass = dotenv.get("DATABASE_PASSWORD");
-    
-    private static DBHelper DB = new DBHelper();
-    private static Statement stmt = DB.formConnection();
 
 
     public static ArrayList<String> getFacilityDetails(Integer ID){
@@ -19,6 +16,9 @@ public class FacilityDAO {
         ArrayList<String> facilityDetails = new ArrayList<String>();
         
         try{              
+            Class.forName("com.mysql.jdbc.Driver");  
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+            Statement stmt=con.createStatement();
             String query = "select * from facilities where idFacilities = "+ ID; 
             
             ResultSet rs=stmt.executeQuery(query);
@@ -66,8 +66,23 @@ public class FacilityDAO {
 
                 }
             
-                public Object addNewFacility(){
-                    
+                public static void addNewFacility(String name, String location, String phone, Integer numOfRooms){
+                    try{  
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();  
+                        
+                        String query = "INSERT INTO facilities(Name,Location,phoneNumber,numOfRooms) VALUES(" + "'" + name + "','" + location + "','" + phone + "','" + numOfRooms + "')";
+                        Integer rs=stmt.executeUpdate(query);
+                        con.close();
+                        if(rs == 1){
+                        System.out.println("Facility Added");
+                        }else{
+                            System.out.println("Problem with insert");
+                        }
+                    }catch(Exception e){ 
+                        System.out.println(e);
+                    }
                 }
             
                 public Object removeFacility(){
@@ -120,7 +135,8 @@ public class FacilityDAO {
 
                 
         public static void main(String args[]){
-            System.out.println(getFacilityDetails(1));
+            //System.out.println(getFacilityDetails(1));
+            //addNewFacility("Adam Insert Test", "Address", "4062039222", 10);
         }
 
     }

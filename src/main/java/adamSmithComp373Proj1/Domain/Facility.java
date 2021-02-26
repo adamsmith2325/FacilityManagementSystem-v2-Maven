@@ -10,10 +10,10 @@ public class Facility {
     private Integer FacilityID;
     private String Name;
     private String Location;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private Integer numOfRooms;
     private FacilityDAO Connection  = new FacilityDAO();
-    private ArrayList<FacilityUse> OccupiedRoomsList;
+    private ArrayList<Integer> OccupiedRoomsList;
 
 
     //Misc. Relevant Methods
@@ -28,8 +28,11 @@ public class Facility {
         return facilityInfo;
     }
 
-    public Integer requestAvailableCapacity(){
+    public ArrayList<Integer> requestAvailableCapacity(){
+        
         ArrayList<Integer> availableRooms;
+        availableRooms = new ArrayList<Integer>();
+        
         for(Integer i = 1; i < numOfRooms+1; i++){
             if(!OccupiedRoomsList.contains(i)){
                 availableRooms.add(i);
@@ -38,7 +41,7 @@ public class Facility {
         return availableRooms;
     }
 
-    public void addNewFacility(String addName, String addLocation, Integer addPhone, Integer addNumOfRooms){
+    public void addNewFacility(String addName, String addLocation, String addPhone, Integer addNumOfRooms){
         Connection.addNewFacility(addName, addLocation, addPhone, addNumOfRooms);
         System.out.println(addName + " has been added to the list of facilities");
     }
