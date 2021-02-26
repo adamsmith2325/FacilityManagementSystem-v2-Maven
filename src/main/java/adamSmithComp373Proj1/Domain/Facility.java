@@ -13,7 +13,7 @@ public class Facility {
     private Integer phoneNumber;
     private Integer numOfRooms;
     private FacilityDAO Connection  = new FacilityDAO();
-
+    private ArrayList<FacilityUse> OccupiedRoomsList;
 
 
     //Misc. Relevant Methods
@@ -28,8 +28,14 @@ public class Facility {
         return facilityInfo;
     }
 
-    public Object requestAvailableCapacity(){
-
+    public Integer requestAvailableCapacity(){
+        ArrayList<Integer> availableRooms;
+        for(Integer i = 1; i < numOfRooms+1; i++){
+            if(!OccupiedRoomsList.contains(i)){
+                availableRooms.add(i);
+            }
+        }
+        return availableRooms;
     }
 
     public void addNewFacility(String addName, String addLocation, Integer addPhone, Integer addNumOfRooms){
@@ -82,4 +88,13 @@ public class Facility {
     }
 
 
+    //Occupany Methods
+
+    public void addFacilityUse(){
+        OccupiedRoomsList
+    }
+
+    public void voidFacilityUse(){
+        OccupiedRoomsList
+    }
 }

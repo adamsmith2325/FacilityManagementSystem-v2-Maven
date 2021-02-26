@@ -2,15 +2,11 @@ package adamSmithComp373Proj1.DAL;
 import java.sql.*;
 
 public class DBHelper {
-    public static void main(String args[]){  
-        try{  
+    
+    public static Statement formConnection(){  
         Class.forName("com.mysql.jdbc.Driver");  
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
-        Statement stmt=con.createStatement();  
-        ResultSet rs=stmt.executeQuery("select * from facilities");  
-        while(rs.next())  
-        System.out.println(rs.getInt(1) + " - " + rs.getString(2));  
-        con.close();  
-        }catch(Exception e){ System.out.println(e);}  
-        }  
+        Statement stmt = con.createStatement();  
+        return stmt;
+    }
 }
