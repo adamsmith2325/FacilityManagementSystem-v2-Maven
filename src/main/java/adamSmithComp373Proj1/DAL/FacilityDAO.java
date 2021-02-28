@@ -53,7 +53,6 @@ public class FacilityDAO {
                     
                     while(rs.next())  
                         allFacilities.add(rs.getString(2) + " - id: " + rs.getInt(1));
-                    con.close();   
                     return allFacilities;
         
                 }catch(Exception e){ 
@@ -68,7 +67,6 @@ public class FacilityDAO {
                         
                         String query = "INSERT INTO facilities(Name,Location,phoneNumber,numOfRooms) VALUES(" + "'" + name + "','" + location + "','" + phone + "','" + numOfRooms + "')";
                         Integer rs=stmt.executeUpdate(query);
-                        con.close();
                         if(rs == 1){
                         System.out.println("Facility Added");
                         }else{
@@ -217,10 +215,11 @@ public class FacilityDAO {
                     }
                 }
 
-                public static void updateOccupiedRooms(ArrayList<Integer> RoomList, Integer ID){
+                public static void updateOccupiedRooms(Integer change, Integer ID){
+                    Integer updateNum = getOccupiedRooms(ID) + change;
                     try{ 
                         Statement stmt=con.createStatement();      
-                        String query = "UPDATE facilities " + "SET OccupiedRooms = " + "'" +  RoomList + "'" + " WHERE idFacilities = " + ID;
+                        String query = "UPDATE facilities " + "SET OccupiedRooms = " + "'" + updateNum + "'" + " WHERE idFacilities = " + ID;
                         Integer rs=stmt.executeUpdate(query);
                         System.out.println("Facility " + ID + "'s list of available rooms has been updated");
                     }catch(Exception e){ 
@@ -229,35 +228,24 @@ public class FacilityDAO {
                 }
 
                 
-                public ArrayList<Integer> getOccupiedRooms(Integer ID){
-                    ArrayList<Integer> Occupied = new ArrayList<Integer>();
-
-
+                public static  Integer getOccupiedRooms(Integer ID){
+                    Integer Occupied = null;
                     try{
                         Statement stmt=con.createStatement();
                         String query = "select OccupiedRooms from facilities where idFacilities = " + ID; 
                         
                         ResultSet rs=stmt.executeQuery(query);
                         while(rs.next()){
-                            Array result = rs.getArray(1);
-                            Integer[] IntResult = (Integer[])result.getArray();
-                            for (int i : IntResult)
-                                    {
-                                        Occupied.add(i);
-                                    }
+                            Occupied = rs.getInt(1);
+                        }
+                            
 
-                            }
-                        
                         }catch(Exception e){ 
                             System.out.println(e.toString());
                         }
-                        
-                        return Occupied;
+                        return Occupied;   
 
                 }
-
-                
-
 
 
 
@@ -276,7 +264,7 @@ public class FacilityDAO {
             //testList.add(2);
             //testList.remove(1);
             //updateOccupiedRooms(testList, 3);
-        
+            
         }
 
     }

@@ -12,8 +12,7 @@ public class Facility {
     private String Location = Connection.getLocation(this.FacilityID);
     private String phoneNumber = Connection.getPhone(this.FacilityID);
     private Integer numOfRooms = Connection.getNumberOfRooms(this.FacilityID);
-   
-    public ArrayList<Integer> OccupiedRoomsList = Connection.getOccupiedRooms(this.FacilityID);
+    public Integer OccupiedRooms = Connection.getOccupiedRooms(this.FacilityID);
 
 
     public Facility(Integer ID){
@@ -32,18 +31,18 @@ public class Facility {
         return facilityInfo;
     }
 
-    public ArrayList<Integer> requestAvailableCapacity(){
-        ArrayList<Integer> OccList = Connection.getOccupiedRooms(this.FacilityID);
-        ArrayList<Integer> availableRooms;
-        availableRooms = new ArrayList<Integer>();
+    
+
+    public Integer requestAvailableCapacity(){
+        Integer Occupied = Connection.getOccupiedRooms(this.FacilityID);
+        Integer totalRooms = Connection.getNumberOfRooms(this.FacilityID);
+        Integer capacity = totalRooms - Occupied;
         
-        for(Integer i = 1; i < this.getNumberOfRooms()+1; i++){
-            if(OccList.contains(i) == false){
-                availableRooms.add(i);
-            }
-        }
-        return availableRooms;
+        return capacity;
     }
+
+
+
 
     public void addNewFacility(String addName, String addLocation, String addPhone, Integer addNumOfRooms){
         Connection.addNewFacility(addName, addLocation, addPhone, addNumOfRooms);
@@ -56,10 +55,6 @@ public class Facility {
 
     
     //Get functionalities
-    public Integer getID(){
-       return this.FacilityID;
-    }
-
 
     public String getName(){
         return Connection.getName(this.FacilityID);
@@ -100,19 +95,25 @@ public class Facility {
 
     //Occupany Methods
 
-    public ArrayList<Integer> getOccupiedRooms(){
+    public Integer getOccupiedRooms(){
         return Connection.getOccupiedRooms(this.FacilityID);
     }
 
 
-    public void addOccupiedRoom(Integer RoomNumber){
-        OccupiedRoomsList.add(RoomNumber);
-        Connection.updateOccupiedRooms(OccupiedRoomsList, this.FacilityID);
+    public void addOccupiedRoom(){
+        if (Connection.getNumberOfRooms(this.FacilityID) - Connection.getOccupiedRooms(this.FacilityID) > 0){
+        Connection.updateOccupiedRooms(1, this.FacilityID);
+        } else {
+            System.out.println("There is no more capacity");
+        }
     }
 
-    public void voidOccupiedRoom(Integer RoomNumber){
-        OccupiedRoomsList.remove(RoomNumber);
-        Connection.updateOccupiedRooms(OccupiedRoomsList, this.FacilityID);
+    public void voidOccupiedRoom(){
+        if ((Connection.getOccupiedRooms(this.FacilityID) == 0) || (Connection.getOccupiedRooms(this.FacilityID) < 0)){
+            System.out.println("There are no occupied rooms, all rooms are available");
+        } else {
+            Connection.updateOccupiedRooms(-1, this.FacilityID);
+        }
     }
 
 
