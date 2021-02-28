@@ -12,7 +12,7 @@ public class FacilityDAO {
     private static Connection con = DB.formConnection();
 
 
-    public static ArrayList<String> getFacilityDetails(Integer ID){
+    public ArrayList<String> getFacilityDetails(Integer ID){
         
         ArrayList<String> facilityDetails = new ArrayList<String>();
         
@@ -40,7 +40,7 @@ public class FacilityDAO {
 
 
 
-            public static ArrayList<String> listFacilities(){
+            public ArrayList<String> listFacilities(){
                 
                 ArrayList<String> allFacilities = new ArrayList<String>();
 
@@ -61,7 +61,7 @@ public class FacilityDAO {
                     }  
                 }
             
-                public static void addNewFacility(String name, String location, String phone, Integer numOfRooms){
+                public void addNewFacility(String name, String location, String phone, Integer numOfRooms){
                     try{  
                         Statement stmt=con.createStatement();  
                         
@@ -171,7 +171,7 @@ public class FacilityDAO {
             
                 //Set functionalities
             
-                public static void setName(Integer Id, String newName){
+                public void setName(Integer Id, String newName){
                     try{ 
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET Name = " + "'" +  newName + "'" + " WHERE idFacilities = " + Id;
@@ -182,7 +182,7 @@ public class FacilityDAO {
                     }
                 }
             
-                public static void setLocation(Integer Id, String newLocation){
+                public void setLocation(Integer Id, String newLocation){
                     try{ 
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET Location = " + "'" +  newLocation + "'" + " WHERE idFacilities = " + Id;
@@ -193,7 +193,7 @@ public class FacilityDAO {
                     }
                 }
             
-                public static void setPhone(Integer Id, String newPhone){
+                public void setPhone(Integer Id, String newPhone){
                     try{ 
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET phoneNumber = " + "'" +  newPhone + "'" + " WHERE idFacilities = " + Id;
@@ -204,7 +204,7 @@ public class FacilityDAO {
                     }
                 }
             
-                public static void setNumberOfRooms(Integer Id, Integer newRoomsNum){
+                public void setNumberOfRooms(Integer Id, Integer newRoomsNum){
                     try{ 
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET numOfRooms = " + "'" +  newRoomsNum + "'" + " WHERE idFacilities = " + Id;
@@ -215,7 +215,7 @@ public class FacilityDAO {
                     }
                 }
 
-                public static void updateOccupiedRooms(Integer change, Integer ID){
+                public void updateOccupiedRooms(Integer change, Integer ID){
                     Integer updateNum = getOccupiedRooms(ID) + change;
                     try{ 
                         Statement stmt=con.createStatement();      
