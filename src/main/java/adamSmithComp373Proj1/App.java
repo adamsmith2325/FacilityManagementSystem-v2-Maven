@@ -16,11 +16,17 @@ public final class App {
         System.out.println(facility.getName());
         System.out.println(facility.getLocation());
         //System.out.println("Hello World!");
+        System.out.println(facility.getOccupiedRooms());
         System.out.println(facility.listFacilities());
         //facility.addNewFacility("Interface Insert Test", "6533 N Newgard Avenue, Chicago, IL 60626", "9062039222", 15);\
         //System.out.println(facility.getNumberOfRooms());
-        //System.out.println(facility.requestAvailableCapacity());
-        System.out.println(facility.getOccupiedRooms());
-        
+        System.out.println(facility.requestAvailableCapacity());
+        //facility.addOccupiedRoom();
+        //facility.addOccupiedRoom();
+        //facility.addOccupiedRoom();
+        //facility.addOccupiedRoom();
+        //facility.voidOccupiedRoom();
+        //facility.voidOccupiedRoom();
+        //facility.voidOccupiedRoom();
     }
 }
