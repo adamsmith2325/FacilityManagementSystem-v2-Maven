@@ -1,17 +1,15 @@
 package adamSmithComp373Proj1.DAL;
+import adamSmithComp373Proj1.DAL.DBHelper;
 import java.sql.*;
-import io.github.cdimascio.dotenv.Dotenv;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import java.util.ArrayList;
+
 
 public class FacilityDAO {
 
-    private static GsonBuilder gsonBuilder = new GsonBuilder();
-    private static Gson gson = gsonBuilder.create();
+    private static DBHelper DB = new DBHelper();
+
+    private static Connection con = DB.formConnection();
 
 
     public static ArrayList<String> getFacilityDetails(Integer ID){
@@ -19,8 +17,6 @@ public class FacilityDAO {
         ArrayList<String> facilityDetails = new ArrayList<String>();
         
         try{              
-            Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
             Statement stmt=con.createStatement();
             String query = "select * from facilities where idFacilities = "+ ID; 
             
@@ -49,8 +45,6 @@ public class FacilityDAO {
                 ArrayList<String> allFacilities = new ArrayList<String>();
 
                 try{  
-                    Class.forName("com.mysql.jdbc.Driver");  
-                    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                     Statement stmt=con.createStatement();  
                     
                     String query = "select * from facilities";
@@ -70,8 +64,6 @@ public class FacilityDAO {
             
                 public static void addNewFacility(String name, String location, String phone, Integer numOfRooms){
                     try{  
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();  
                         
                         String query = "INSERT INTO facilities(Name,Location,phoneNumber,numOfRooms) VALUES(" + "'" + name + "','" + location + "','" + phone + "','" + numOfRooms + "')";
@@ -89,8 +81,6 @@ public class FacilityDAO {
             
                 public void removeFacility(Integer RemovalID){
                 try{ 
-                    Class.forName("com.mysql.jdbc.Driver");  
-                    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                     Statement stmt=con.createStatement();      
                     String query = "DELETE FROM facilities WHERE idFacilities = " + RemovalID;
                     Integer rs=stmt.executeUpdate(query);
@@ -106,8 +96,6 @@ public class FacilityDAO {
                 public String getName(Integer SearchID){
                     String returnString ="";
                     try{              
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();
                         String query = "select * from facilities where idFacilities = "+ SearchID; 
                         
@@ -127,8 +115,6 @@ public class FacilityDAO {
                 public String getLocation(Integer SearchID){
                     String returnString ="";
                     try{              
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();
                         String query = "select * from facilities where idFacilities = "+ SearchID; 
                         
@@ -148,8 +134,6 @@ public class FacilityDAO {
                 public String getPhone(Integer SearchID){
                         String returnString ="";
                     try{              
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();
                         String query = "select * from facilities where idFacilities = "+ SearchID; 
                         
@@ -169,8 +153,6 @@ public class FacilityDAO {
                 public Integer getNumberOfRooms(Integer SearchID){
                     Integer returnInt = null;
                     try{              
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();
                         String query = "select * from facilities where idFacilities = "+ SearchID; 
                         
@@ -193,8 +175,6 @@ public class FacilityDAO {
             
                 public static void setName(Integer Id, String newName){
                     try{ 
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET Name = " + "'" +  newName + "'" + " WHERE idFacilities = " + Id;
                         Integer rs=stmt.executeUpdate(query);
@@ -206,8 +186,6 @@ public class FacilityDAO {
             
                 public static void setLocation(Integer Id, String newLocation){
                     try{ 
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET Location = " + "'" +  newLocation + "'" + " WHERE idFacilities = " + Id;
                         Integer rs=stmt.executeUpdate(query);
@@ -219,8 +197,6 @@ public class FacilityDAO {
             
                 public static void setPhone(Integer Id, String newPhone){
                     try{ 
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET phoneNumber = " + "'" +  newPhone + "'" + " WHERE idFacilities = " + Id;
                         Integer rs=stmt.executeUpdate(query);
@@ -232,8 +208,6 @@ public class FacilityDAO {
             
                 public static void setNumberOfRooms(Integer Id, Integer newRoomsNum){
                     try{ 
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET numOfRooms = " + "'" +  newRoomsNum + "'" + " WHERE idFacilities = " + Id;
                         Integer rs=stmt.executeUpdate(query);
@@ -245,8 +219,6 @@ public class FacilityDAO {
 
                 public static void updateOccupiedRooms(ArrayList<Integer> RoomList, Integer ID){
                     try{ 
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
                         Statement stmt=con.createStatement();      
                         String query = "UPDATE facilities " + "SET OccupiedRooms = " + "'" +  RoomList + "'" + " WHERE idFacilities = " + ID;
                         Integer rs=stmt.executeUpdate(query);
@@ -261,9 +233,7 @@ public class FacilityDAO {
                     ArrayList<Integer> Occupied = new ArrayList<Integer>();
 
 
-                    try{              
-                        Class.forName("com.mysql.jdbc.Driver");  
-                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                    try{
                         Statement stmt=con.createStatement();
                         String query = "select OccupiedRooms from facilities where idFacilities = " + ID; 
                         
@@ -301,11 +271,11 @@ public class FacilityDAO {
             //setPhone(3, "9062039222");
             //setNumberOfRooms(3, 2);
             //System.out.println(listFacilities());
-            ArrayList<Integer> testList = new ArrayList<Integer>();
-            testList.add(1);
-            testList.add(2);
+            //ArrayList<Integer> testList = new ArrayList<Integer>();
+            //testList.add(1);
+            //testList.add(2);
             //testList.remove(1);
-            updateOccupiedRooms(testList, 3);
+            //updateOccupiedRooms(testList, 3);
         
         }
 

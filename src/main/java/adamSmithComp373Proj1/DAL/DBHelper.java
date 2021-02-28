@@ -3,10 +3,14 @@ import java.sql.*;
 
 public class DBHelper {
     
-    public static Statement formConnection(){  
-        Class.forName("com.mysql.jdbc.Driver");  
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
-        Statement stmt = con.createStatement();  
-        return stmt;
+    public static Connection formConnection(){  
+        Connection con = null;
+        try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return con;
     }
 }
+
