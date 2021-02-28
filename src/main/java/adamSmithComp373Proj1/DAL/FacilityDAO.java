@@ -2,13 +2,16 @@ package adamSmithComp373Proj1.DAL;
 import java.sql.*;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class FacilityDAO {
-    
-    Dotenv dotenv = Dotenv.load();
-    String  DBUser = dotenv.get("DATABASE_USERNAME");
-    String  DBPass = dotenv.get("DATABASE_PASSWORD");
+
+    private static GsonBuilder gsonBuilder = new GsonBuilder();
+    private static Gson gson = gsonBuilder.create();
 
 
     public static ArrayList<String> getFacilityDetails(Integer ID){
@@ -240,7 +243,50 @@ public class FacilityDAO {
                     }
                 }
 
+                public static void updateOccupiedRooms(ArrayList<Integer> RoomList, Integer ID){
+                    try{ 
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();      
+                        String query = "UPDATE facilities " + "SET OccupiedRooms = " + "'" +  RoomList + "'" + " WHERE idFacilities = " + ID;
+                        Integer rs=stmt.executeUpdate(query);
+                        System.out.println("Facility " + ID + "'s list of available rooms has been updated");
+                    }catch(Exception e){ 
+                        System.out.println(e.toString());
+                    }
+                }
 
+                
+                public ArrayList<Integer> getOccupiedRooms(Integer ID){
+                    ArrayList<Integer> Occupied = new ArrayList<Integer>();
+
+
+                    try{              
+                        Class.forName("com.mysql.jdbc.Driver");  
+                        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+                        Statement stmt=con.createStatement();
+                        String query = "select OccupiedRooms from facilities where idFacilities = " + ID; 
+                        
+                        ResultSet rs=stmt.executeQuery(query);
+                        while(rs.next()){
+                            Array result = rs.getArray(1);
+                            Integer[] IntResult = (Integer[])result.getArray();
+                            for (int i : IntResult)
+                                    {
+                                        Occupied.add(i);
+                                    }
+
+                            }
+                        
+                        }catch(Exception e){ 
+                            System.out.println(e.toString());
+                        }
+                        
+                        return Occupied;
+
+                }
+
+                
 
 
 
@@ -255,6 +301,12 @@ public class FacilityDAO {
             //setPhone(3, "9062039222");
             //setNumberOfRooms(3, 2);
             //System.out.println(listFacilities());
+            ArrayList<Integer> testList = new ArrayList<Integer>();
+            testList.add(1);
+            testList.add(2);
+            //testList.remove(1);
+            updateOccupiedRooms(testList, 3);
+        
         }
 
     }

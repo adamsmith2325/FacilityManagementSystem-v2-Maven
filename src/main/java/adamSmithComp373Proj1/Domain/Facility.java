@@ -1,21 +1,24 @@
 package adamSmithComp373Proj1.Domain;
 import adamSmithComp373Proj1.DAL.FacilityDAO;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 
 public class Facility {
- 
+    
     //Required Class Attributes
     private FacilityDAO Connection  = new FacilityDAO();
     private Integer FacilityID;
     private String Name = Connection.getName(this.FacilityID);
     private String Location = Connection.getLocation(this.FacilityID);
     private String phoneNumber = Connection.getPhone(this.FacilityID);
-    private Integer numOfRooms = Connection.getNumberOfRooms(this.FacilityID);;
+    private Integer numOfRooms = Connection.getNumberOfRooms(this.FacilityID);
    
-    private ArrayList<Integer> OccupiedRoomsList = ;
+    public ArrayList<Integer> OccupiedRoomsList = Connection.getOccupiedRooms(this.FacilityID);
 
+
+    public Facility(Integer ID){
+        this.FacilityID = ID;
+    }
 
     //Misc. Relevant Methods
 
@@ -30,12 +33,12 @@ public class Facility {
     }
 
     public ArrayList<Integer> requestAvailableCapacity(){
-        
+        ArrayList<Integer> OccList = Connection.getOccupiedRooms(this.FacilityID);
         ArrayList<Integer> availableRooms;
         availableRooms = new ArrayList<Integer>();
         
-        for(Integer i = 1; i < numOfRooms+1; i++){
-            if(!OccupiedRoomsList.contains(i)){
+        for(Integer i = 1; i < this.getNumberOfRooms()+1; i++){
+            if(OccList.contains(i) == false){
                 availableRooms.add(i);
             }
         }
@@ -59,19 +62,19 @@ public class Facility {
 
 
     public String getName(){
-        return this.Name;
+        return Connection.getName(this.FacilityID);
     }
 
     public String getLocation(){
-        return this.Location;
+        return Connection.getLocation(this.FacilityID);
     }
 
     public String getPhone(){
-        return this.phoneNumber;
+        return Connection.getPhone(this.FacilityID);
     }
 
     public Integer getNumberOfRooms(){
-        return this.numOfRooms;
+        return Connection.getNumberOfRooms(this.FacilityID);
     }
 
 
@@ -97,11 +100,46 @@ public class Facility {
 
     //Occupany Methods
 
-    public void addFacilityUse(){
-        //OccupiedRoomsList
+    public ArrayList<Integer> getOccupiedRooms(){
+        return Connection.getOccupiedRooms(this.FacilityID);
     }
 
-    public void voidFacilityUse(){
-        //OccupiedRoomsList
+
+    public void addOccupiedRoom(Integer RoomNumber){
+        OccupiedRoomsList.add(RoomNumber);
+        Connection.updateOccupiedRooms(OccupiedRoomsList, this.FacilityID);
     }
+
+    public void voidOccupiedRoom(Integer RoomNumber){
+        OccupiedRoomsList.remove(RoomNumber);
+        Connection.updateOccupiedRooms(OccupiedRoomsList, this.FacilityID);
+    }
+
+
+
+
+    public static void main(String args[]){
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
