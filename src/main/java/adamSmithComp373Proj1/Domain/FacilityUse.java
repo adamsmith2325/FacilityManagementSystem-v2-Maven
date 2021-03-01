@@ -9,6 +9,7 @@ public class FacilityUse {
     private LocalDate dateEnded;
     private int facID;
     private int locationID;
+    private int useID;
 
     public LocalDate getDateStarted() {
 
@@ -28,6 +29,15 @@ public class FacilityUse {
     public void setDateEnded(LocalDate dateEnded) {
 
         this.dateEnded = dateEnded;
+    }
+
+    public int getUseID() {
+        
+        return useID;
+    }
+    public void setUseID(int useID) {
+        
+        this.useID = useID;
     }
 
     public Facility getFacility() {
