@@ -32,5 +32,29 @@ public class FacilityMaintainence implements Facility {
     public void setFacilityID(int facilityID) {
         this.facilityID = facilityID;
     }
-    
+    public String getMaintDetails() {
+        
+        return maintDetails;
+    }
+    public void setMaintDetails(String details) {
+        this.maintDetails = maintDetails;
+    }
+    public int getCost() {
+        
+        return cost;
+    }
+    public void setCost(int cost) {
+        
+        this.cost = cost;
+    }
+    public Facility getFacility() {
+        return facility;
+    }
+    public void setFacility(Facility facility) {
+        
+        this.facility = facility;
+    }
+
+
+
 }
