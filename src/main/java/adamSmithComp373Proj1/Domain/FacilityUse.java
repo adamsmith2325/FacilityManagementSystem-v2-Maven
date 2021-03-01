@@ -10,7 +10,11 @@ public class FacilityUse {
     
     public void setFacility(Facility facility){
         
-    };
+    }
+    public void setUseID(int useID);
+
+    public void setRoomNumber(int roomNumber);
+    
     public Object isInUseDuringInterval(){
 
     }
@@ -34,6 +38,18 @@ public class FacilityUse {
     public Object calcUsageRate(){
         
     }
-
+    public LocalDate getStartDate(){
+        
+    }
+    public void setStartDate(LocalDate startDate){
+        
+    }
+    public LocalDate getEndDate(){
+        
+    }
+    public void setEndDate(LocalDate endDate){
+        
+    }
+    
 
 }
