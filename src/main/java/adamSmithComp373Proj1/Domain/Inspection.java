@@ -11,13 +11,13 @@ public class Inspection {
     private String Name = Conn.getName();
     private Type InsType = Conn.getType();
     private String Details = Conn.getDetails();
-    private Integer facility = Conn.getFacility().getID();
+    private Integer facility = Conn.getFacility();
     private Integer Room = Conn.getRoom();
     
 
 
     
-    public addInspection(){
+    public void addInspection(){
         
     }
 

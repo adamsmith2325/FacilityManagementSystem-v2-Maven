@@ -27,6 +27,7 @@ public class FacilityDAO {
                 facilityDetails.add(rs.getString(3)); //Grabbing the Location from the database
                 facilityDetails.add(rs.getString(4)); //Grabbing the phone from the database
                 facilityDetails.add(rs.getString(5)); //Grabbing the number of rooms from the database
+                facilityDetails.add(rs.getString(6)); //Grabbing the number of occupied rooms
             }
             
             return facilityDetails;

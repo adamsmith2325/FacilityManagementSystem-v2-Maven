@@ -1,5 +1,5 @@
 package adamSmithComp373Proj1.Domain;
-import adamSmithComp373Proj1.Domain;
+import adamSmithComp373Proj1.Domain.*;
 import java.time.LocalDate;
 
 public class FacilityUse {

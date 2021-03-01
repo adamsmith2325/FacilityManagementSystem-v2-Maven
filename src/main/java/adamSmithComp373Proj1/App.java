@@ -11,7 +11,7 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-       Facility facility = new Facility(3);
+       Facility facility = new Facility(1);
         System.out.println(facility.getFacilityInformation());
         System.out.println(facility.getName());
         System.out.println(facility.getLocation());
@@ -28,5 +28,6 @@ public final class App {
         //facility.voidOccupiedRoom();
         //facility.voidOccupiedRoom();
         //facility.voidOccupiedRoom();
+        //FacilityMaintainence main = new FacilityMaintainence();    
     }
 }

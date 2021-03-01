@@ -1,5 +1,4 @@
 package adamSmithComp373Proj1.DAL;
-import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;  
 
 
@@ -7,17 +6,12 @@ import java.sql.*;
 
 public class DBConnectionTest {
     
-    Dotenv dotenv = Dotenv.load();
-    String DBUser = dotenv.get("DATABASE_USERNAME");
-    String DBPass = dotenv.get("DATABASE_PASSWORD");
-    
-    
     
     
     public static void main(String args[]){  
         try{  
         Class.forName("com.mysql.jdbc.Driver");  
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", "root", "root");  
+        Connection con=DriverManager.getConnection("jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3395846", "sql3395846", "IV4NBJnb8F");  
         Statement stmt=con.createStatement();  
         ResultSet rs=stmt.executeQuery("select * from facilities");  
         while(rs.next())  
