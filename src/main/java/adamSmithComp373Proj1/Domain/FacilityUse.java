@@ -45,4 +45,19 @@ public class FacilityUse {
         this.locationID = locationID;
     }
 
+    public void setFacility(Facility facility) {
+
+        this.facility = facility;
+    }
+
+    public int getFID() {
+
+        return facID;
+    }
+
+    public void setFID(int facID) {
+
+        this.facID = facID;
+    }
+
 }
