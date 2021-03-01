@@ -1,5 +1,5 @@
 # FMS-v2-Comp-373-Maven
- 
+ Teammates include: Adam Smith, Neha Patel, and Saira Bano
 ## Project Description:
 Project 1: Facility Management System Design and Implementation
 
