@@ -1,29 +1,36 @@
 package adamSmithComp373Proj1.Domain;
- import adamSmithComp373Proj1.Domain.*;
+import adamSmithComp373Proj1.Domain.*;
 
- enum RequestType {Repair, Cleaning, BrokenItem}
+enum RequestType {Repair, Cleaning, BrokenItem}
 
- public class FacilityMaintainence {
- public class FacilityMaintainence extends Facility {
+public class FacilityMaintainence implements Facility {
 
-     private Integer RequestID;
-     private Facility facility;
-    private RequestType MainType;
-    public Object makeFacilityMaintRequest(){
+    private Integer RequestID;
+    private int mainRequestID;
+    private int facilityID;
+    private String maintDetails;
+    private int cost;
+    private Facility facility;
+
+
+    public int getRequestID() {
+        return RequestID;
     }
-    public Object scheduleMaintenance(){
+    public void setRequestID(int RequestID) {
+        this.RequestID = RequestID;
     }
-    public Object calcMaintenanceCostForFacility(){
+    public int getMainRequestID() {
+        return mainRequestID;
     }
-    public Object calcProblemRateForFacility(){
+    public void setMainRequestID(int mainRequestID) {
+        this.mainRequestID = maintRequestID;
     }
-    public Object calcDownTimeForFacility(){
-    }
-    public Object listMaintRequests(){
-    }
-    public Object listMaintenance(){
-    }
-    public Object listFacilityProblems(){
+    public int getFacilityID() {
         
+        return facilityID;
     }
+    public void setFacilityID(int facilityID) {
+        this.facilityID = facilityID;
+    }
+    
 }
