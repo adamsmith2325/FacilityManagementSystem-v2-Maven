@@ -4,81 +4,118 @@ import java.sql.*;
 
 
 public class FacilityUseDAO {
-    
+
     private static DBHelper DB = new DBHelper();
 
     private static Connection con = DB.formConnection();
 
     public Date getDateStarted(Integer SearchID) {
         Date returnString = null;
-        try{              
+        try{
             Statement stmt=con.createStatement();
-            String query = "select dateStarted from uses where useID = "+ SearchID; 
-            
+            String query = "select dateStarted from uses where useID = "+ SearchID;
+
             ResultSet rs=stmt.executeQuery(query);
             while(rs.next()){
                 returnString = rs.getDate(1);
             }
-            
-            }catch(Exception e){ 
+
+            }catch(Exception e){
                 System.out.println(e.toString());
             }
-            
+
             return returnString;
-            
+
     }
 
     public void setDateStarted(Date dateStarted) {
-
-        this.dateStarted = dateStarted;
+        try{ 
+            Statement stmt=con.createStatement();      
+            String query = "UPDATE facilities " + "Update date = " + "'" +  dateStarted + "'";
+            Integer rs=stmt.executeUpdate(query);
+            System.out.println("Facility " +  "date has been updated");
+        }catch(Exception e){ 
+            System.out.println(e.toString());
+        }
     }
 
     public Date getDateEnded() {
+        Date returnString = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "select dateEnded from uses where useID = "+ getDateEnded();
 
-        return dateEnded;
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnString = rs.getDate(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnString;
     }
 
     public void setDateEnded(Date dateEnded) {
-
-        this.dateEnded = dateEnded;
+        try{ 
+            Statement stmt=con.createStatement();      
+            String query = "UPDATE facilities " + "Update date = ";
+            Integer rs=stmt.executeUpdate(query);
+            System.out.println("Facility " +  "date has been updated");
+        }catch(Exception e){ 
+            System.out.println(e.toString());
+        }
     }
 
     public int getUseID() {
-        
-        return useID;
+        Integer returnInt = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "get useID = "+ getUseID();
+
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnInt = rs.getInt(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnInt;
     }
     public void setUseID(int useID) {
-        
-        this.useID = useID;
+
+        try{ 
+            Statement stmt=con.createStatement();      
+            String query = "UPDATE facilities " + "Update USEID = " + "'" +  useID ;
+            Integer rs=stmt.executeUpdate(query);
+            System.out.println("Facility " +  "date has been updated");
+        }catch(Exception e){ 
+            System.out.println(e.toString());
+        }
     }
 
-    public Facility getFacility() {
+    public Integer getFacility() {
 
-        return facility;
+        Integer returnInt = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "get Facility = "+ getFacility();
+
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnInt = rs.getInt(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnInt;
     }
 
-    public int getLocationID() {
 
-        return locationID;
-    }
-
-    public void setLocationID(int locationID) {
-
-        this.locationID = locationID;
-    }
-
-    public void setFacility(Integer facilityID) {
-
-        this.facility = facility;
-    }
-
-    public int getRoomID() {
-
-        return roomID;
-    }
-
-    public void setRoomID(int facID) {
-
-        this.roomID = facID;
-    }
+    
 }
