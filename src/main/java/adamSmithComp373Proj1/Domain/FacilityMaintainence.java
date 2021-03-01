@@ -1,60 +1,29 @@
 package adamSmithComp373Proj1.Domain;
-import adamSmithComp373Proj1.Domain.*;
+ import adamSmithComp373Proj1.Domain.*;
 
-enum RequestType {Repair, Cleaning, BrokenItem}
+ enum RequestType {Repair, Cleaning, BrokenItem}
 
-public class FacilityMaintainence implements Facility {
+ public class FacilityMaintainence {
+ public class FacilityMaintainence extends Facility {
 
-    private Integer RequestID;
-    private int mainRequestID;
-    private int facilityID;
-    private String maintDetails;
-    private int cost;
-    private Facility facility;
-
-
-    public int getRequestID() {
-        return RequestID;
+     private Integer RequestID;
+     private Facility facility;
+    private RequestType MainType;
+    public Object makeFacilityMaintRequest(){
     }
-    public void setRequestID(int RequestID) {
-        this.RequestID = RequestID;
+    public Object scheduleMaintenance(){
     }
-    public int getMainRequestID() {
-        return mainRequestID;
+    public Object calcMaintenanceCostForFacility(){
     }
-    public void setMainRequestID(int mainRequestID) {
-        this.mainRequestID = maintRequestID;
+    public Object calcProblemRateForFacility(){
     }
-    public int getFacilityID() {
-
-        return facilityID;
+    public Object calcDownTimeForFacility(){
     }
-    public void setFacilityID(int facilityID) {
-        this.facilityID = facilityID;
+    public Object listMaintRequests(){
     }
-    public String getMaintDetails() {
-
-        return maintDetails;
+    public Object listMaintenance(){
     }
-    public void setMaintDetails(String details) {
-        this.maintDetails = maintDetails;
+    public Object listFacilityProblems(){
+        
     }
-    public int getCost() {
-
-        return cost;
-    }
-    public void setCost(int cost) {
-
-        this.cost = cost;
-    }
-    public Facility getFacility() {
-        return facility;
-    }
-    public void setFacility(Facility facility) {
-
-        this.facility = facility;
-    }
-
-
-
 }
