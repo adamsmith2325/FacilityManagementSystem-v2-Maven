@@ -1,55 +1,27 @@
 package adamSmithComp373Proj1.Domain;
+import adamSmithComp373Proj1.Domain;
+import java.time.LocalDate;
 
 public class FacilityUse {
 
-    public Facility getFacility();
-    public int getUseID();
-    public int getFacilityID();
-    public int getRoomNumber();
-    
-    
-    public void setFacility(Facility facility){
-        
-    }
-    public void setUseID(int useID);
 
-    public void setRoomNumber(int roomNumber);
-    
-    public Object isInUseDuringInterval(){
+    private LocalDate dateStarted;
+    private LocalDate dateEnded;
 
+    public LocalDate getDateStarted() {
+        return dateStarted;
     }
-    
-    public Object assignFacilityToUse(){
 
+    public void setDateStarted(LocalDate dateStarted) {
+        this.dateStarted = dateStarted;
     }
-    
-    public Object vacateFacility(){
 
+    public LocalDate getDateEnded() {
+        return dateEnded;
     }
-    
-    public Object listInspections(){
 
+    public void setDateEnded(LocalDate dateEnded) {
+        this.dateEnded = dateEnded;
     }
-    
-    public Object listActualUsage(){
 
-    }
-    
-    public Object calcUsageRate(){
-        
-    }
-    public LocalDate getStartDate(){
-        
-    }
-    public void setStartDate(LocalDate startDate){
-        
-    }
-    public LocalDate getEndDate(){
-        
-    }
-    public void setEndDate(LocalDate endDate){
-        
-    }
-    
-
-}
+}  
