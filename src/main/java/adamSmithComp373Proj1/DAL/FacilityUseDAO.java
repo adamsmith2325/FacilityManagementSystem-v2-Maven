@@ -117,5 +117,35 @@ public class FacilityUseDAO {
     }
 
 
-    
+    public void setFacility(Integer facilityID) {
+
+        try{ 
+            Statement stmt=con.createStatement();      
+            String query = "UPDATE facilities " + "Set Facility = " + "'" +  facilityID + "'";
+            Integer rs=stmt.executeUpdate(query);
+            System.out.println("Facility has been set");
+        }catch(Exception e){ 
+            System.out.println(e.toString());
+        }
+    }
+
+    public int getRoomID() {
+
+        return roomID;
+    }
+
+    public void setRoomID(int facID) {
+        try{ 
+            Statement stmt=con.createStatement();      
+            String query = "UPDATE facilities " + "Room number set = " + "'" +  facID + "'" ;
+            Integer rs=stmt.executeUpdate(query);
+            System.out.println("Facility " +  "Room number set");
+        }catch(Exception e){ 
+            System.out.println(e.toString());
+        }
+    }
+
+	public Date dateEnded(int useID) {
+		return null;
+	}
 }
