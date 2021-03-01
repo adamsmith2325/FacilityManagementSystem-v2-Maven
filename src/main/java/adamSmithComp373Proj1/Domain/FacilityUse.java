@@ -1,32 +1,45 @@
 package adamSmithComp373Proj1.Domain;
 import adamSmithComp373Proj1.Domain.*;
+import adamSmithComp373Proj1.DAL.*;
+import java.time.format.DateTimeFormatter;  
+import java.sql.Date;
 import java.time.LocalDate;
+
+/*  */
 
 public class FacilityUse {
 
-    private Facility facility;
-    private LocalDate dateStarted;
-    private LocalDate dateEnded;
-    private int facID;
-    private int locationID;
+
+   LocalDate today = LocalDate.now();
+
     private int useID;
+    private static FacilityUseDAO Connection = new FacilityUseDAO();
+    private Facility facility;
+    private Date dateStarted = Connection.getDateStarted(this.useID);
+    private Date dateEnded;
+    private int roomID;
+    
 
-    public LocalDate getDateStarted() {
-
-        return dateStarted;
+    public FacilityUse(Integer ID){
+        this.useID = ID;
     }
 
-    public void setDateStarted(LocalDate dateStarted) {
+    public Date getDateStarted() {
+
+        return Connection.getDateStarted(this.useID);
+    }
+
+    public void setDateStarted(Date dateStarted) {
 
         this.dateStarted = dateStarted;
     }
 
-    public LocalDate getDateEnded() {
+    public Date getDateEnded() {
 
         return dateEnded;
     }
 
-    public void setDateEnded(LocalDate dateEnded) {
+    public void setDateEnded(Date dateEnded) {
 
         this.dateEnded = dateEnded;
     }
@@ -45,29 +58,25 @@ public class FacilityUse {
         return facility;
     }
 
-    public int getLocationID() {
-
-        return locationID;
+    public void setFacility(Integer FacilityID) {
+        Facility facility = new Facility(FacilityID);
+        
+        if ((Connection.getDateStarted(this.useID) <= today) && (Connection.getDateEnded(this.useID) >= today)){
+            facility.addOccupiedRoom();
+        }
+        
+        Connection.setFacility(FacilityID);
+        
     }
 
-    public void setLocationID(int locationID) {
+    public int getRoomID() {
 
-        this.locationID = locationID;
+        return roomID;
     }
 
-    public void setFacility(Facility facility) {
+    public void setRoomID(int facID) {
 
-        this.facility = facility;
-    }
-
-    public int getFID() {
-
-        return facID;
-    }
-
-    public void setFID(int facID) {
-
-        this.facID = facID;
+        this.roomID = facID;
     }
 
 }
