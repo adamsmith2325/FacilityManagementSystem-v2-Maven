@@ -7,17 +7,17 @@ import java.time.LocalDate;
 
 /*  */
 
-public class FacilityUse {
+public class FacilityUse extends AbGetSetUse{
 
 
    LocalDate today = LocalDate.now();
 
     private int useID;
     private static FacilityUseDAO Connection = new FacilityUseDAO();
-    private Facility facility  = Connection.getFacility(this.useID);
+    private Integer facility  = Connection.getFacility();
     private Date dateStarted = Connection.getDateStarted(this.useID);
-    private Date dateEnded  = Connection.getDateEnded(this.useID);
-    private int roomID  = Connection.getRoomID(this.useID);
+    private Date dateEnded  = Connection.getDateEnded();
+    private int roomID  = Connection.getRoomID();
     
 
     public FacilityUse(Integer ID){
@@ -36,14 +36,14 @@ public class FacilityUse {
 
     public Date getDateEnded() {
 
-        return Connection.getDateEnded(this.useID);
+        return Connection.getDateEnded();
     }
 
     public void setDateEnded(Date dateEnded) {
         Connection.setDateEnded(this.dateEnded);
     }
 
-    public int getUseID() {
+    public Integer getUseID() {
         
         return useID;
     }
@@ -52,7 +52,7 @@ public class FacilityUse {
         Connection.setUseID(this.useID);
     }
 
-    public Facility getFacility() {
+    public Integer getFacility() {
 
         return facility;
     }
@@ -69,8 +69,8 @@ public class FacilityUse {
     }
 
     public int getRoomID(Integer roomID) {
-        Connection.getRoomID(this.roomID);
-        return roomID;
+        
+        return Connection.getRoomID();
     }
 
     public void setRoomID(int facID) {
