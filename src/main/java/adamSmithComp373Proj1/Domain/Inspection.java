@@ -1,67 +1,46 @@
-package adamSmithComp373Proj1.Domain;
-import adamSmithComp373Proj1.DAL.InspectionDAO;
-import adamSmithComp373Proj1.Domain.Facility;
+package com.fms.usage;
 
-public enum Type{TYPE, TYPE2, TYPE3}
+import com.fms.main.Facility;
 
-public class Inspection {
-    
-    private InspectionDAO Conn = new InspectionDAO();
-    private Integer InspectionID;
-    private String Name = Conn.getName();
-    private Type InsType = Conn.getType();
-    private String Details = Conn.getDetails();
-    private Integer facility = Conn.getFacility();
-    private Integer Room = Conn.getRoom();
-    
+public class FacilityInspection{
+
+    //attributes needed
+    private int inspectionID;
+    private int facilityID;
+    private String inspection_type;
+    private String inspection_detail;
+    private Facility facility;
 
 
-    
-    public void addInspection(){
-        
+//Still need to edit
+    public Facility getFacility() {
+        return facility;
     }
-
-
-
-    public String getName(){
-        return this.Name;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
-
-    public Type getType(){
-        return this.InsType;
+    public int getFacilityID() {
+        return facilityID;
     }
-
-    public String getDetails(){
-        return this.Details;
+    public void setFacilityID(int facilityID) {
+        this.facilityID = facilityID;
     }
-
-    public Integer getFacility(){
-        return this.facility;
+    public String getInspection_type() {
+        return inspection_type;
     }
-
-    public Integer getRoom(){
-        return this.Room;
+    public void setInspection_type(String inspection_type) {
+        this.inspection_type = inspection_type;
     }
-
-    public void setName(){
-
+    public String getInspection_detail() {
+        return inspection_detail;
     }
-
-    public void setType(){
-        
+    public void setInspection_detail(String inspection_detail) {
+        this.inspection_detail = inspection_detail;
     }
-
-    public void setDetails(){
-        
+    public int getInspectionID() {
+        return inspectionID;
     }
-
-    public void setFacility(){
-        
+    public void setInspectionID(int inspectionID) {
+        this.inspectionID = inspectionID;
     }
-
-    public void setRoom(){
-        
-    }
-
-
 }
