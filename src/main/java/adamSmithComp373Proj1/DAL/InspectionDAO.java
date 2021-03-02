@@ -38,14 +38,39 @@ public class InspectionDAO {
         }
     }
 
-    public String getName() {
-        return this.Name;
+    public String getName(Integer InspectionID) {
+        String returnString ="";
+                    try{              
+                        Statement stmt=con.createStatement();
+                        String query = "select * from Inspections = "+ InspectionID; 
+                        
+                        ResultSet rs=stmt.executeQuery(query);
+                        while(rs.next()){
+                            returnString = rs.getString(2);
+                        }
+                        
+                        }catch(Exception e){ 
+                            returnString = e.toString();
+                        }
+                        
+                        return returnString;
     }
-    public Type getType() {
-        return this.InsType;
-    }
-    public String getDetails() {
-        return this.Details;
+    public String getDetails(Integer InspectionID) {
+        String returnString ="";
+                    try{              
+                        Statement stmt=con.createStatement();
+                        String query = "select * from Inspections = "+ InspectionID; 
+                        
+                        ResultSet rs=stmt.executeQuery(query);
+                        while(rs.next()){
+                            returnString = rs.getString(2);
+                        }
+                        
+                        }catch(Exception e){ 
+                            returnString = e.toString();
+                        }
+                        
+                        return returnString;
     }
     public int getFacility() {
         Integer returnInt = null;
