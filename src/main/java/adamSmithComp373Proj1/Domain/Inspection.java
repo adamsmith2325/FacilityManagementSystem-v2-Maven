@@ -14,9 +14,17 @@ public class Inspection {
     private Integer facility = Conn.getFacility();
     private Integer Room = Conn.getRoom();
     
-    public void addInspection(){
-        
+    public Inspection(Integer ID) {
+        this.InspectionID = ID;
     }
+    
+    public int getInspectionID() {
+        return Conn.getInspectionID(this.InspectionID);
+    }
+    public void addInspectionID(int inspectionID) {
+         Conn.addInspectionID(this.InspectionID);
+    }
+
     public String getName() {
         return this.Name;
     }
@@ -27,9 +35,30 @@ public class Inspection {
         return this.Details;
     }
     public int getFacility() {
-        return this.facility;
+        return Conn.getFacility(this.facility);
     }
 
     public Integer getRoom(){
-        return this.Room;
+        return Conn.getRoom(this.Room);
     }
+    public void setRoom(int InspectionID){
+        Conn.setRoom(this.InspectionID);
+    }
+
+    public void setFacility(Facility facility) {
+        Conn.setFacility();
+    }
+
+    public void setFacility(Integer FacilityID) {
+       
+     Conn.setFacility();
+
+    }
+
+    public void setType(String InsType) {
+        Conn.setType(this.InspectionID);
+    }
+    public void setDetails(String insDetails) {
+        Conn.setDetails();
+    }
+}
