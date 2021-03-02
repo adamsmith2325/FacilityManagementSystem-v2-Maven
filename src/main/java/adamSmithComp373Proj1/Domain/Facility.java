@@ -3,7 +3,7 @@ import adamSmithComp373Proj1.DAL.FacilityDAO;
 
 import java.util.ArrayList;
 
-public class Facility {
+public class Facility implements FacilityGetSetInterface {
     
     //Required Class Attributes
     private FacilityDAO Connection  = new FacilityDAO();
@@ -72,6 +72,9 @@ public class Facility {
         return Connection.getNumberOfRooms(this.FacilityID);
     }
 
+    public Integer getOccupiedRooms(){
+        return Connection.getOccupiedRooms(this.FacilityID);
+    }
 
 
     //Set functionalities
@@ -93,12 +96,8 @@ public class Facility {
     }
 
 
+
     //Occupany Methods
-
-    public Integer getOccupiedRooms(){
-        return Connection.getOccupiedRooms(this.FacilityID);
-    }
-
 
     public void addOccupiedRoom(){
         if (Connection.getNumberOfRooms(this.FacilityID) - Connection.getOccupiedRooms(this.FacilityID) > 0){
@@ -115,31 +114,6 @@ public class Facility {
             Connection.updateOccupiedRooms(-1, this.FacilityID);
         }
     }
-
-
-
-
-    public static void main(String args[]){
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
