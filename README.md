@@ -1,5 +1,17 @@
 # FMS-v2-Comp-373-Maven
  Teammates include: Adam Smith, Neha Patel, and Saira Bano
+
+
+## Running Tests
+In FacilityTest: Please update the Facility ID of the new facility created after every testing session. If you do not, those tests will fail as the added facility will be created under a different ID and will not fulfill the delete portion of the Main Functionalities Tests
+
+## To access the database
+Download MySQL Workbench, enter creds from the DBHelper class, then test and save the connection.
+
+## Manual Testing and Running Locally
+Please run all non-unit testing from the client interface App.java class
+
+
 ## Project Description:
 Project 1: Facility Management System Design and Implementation
 
