@@ -1,5 +1,7 @@
 package adamSmithComp373Proj1.DAL;
 import adamSmithComp373Proj1.DAL.DBHelper;
+import adamSmithComp373Proj1.Domain.FacilityGetSetInterface;
+
 import java.sql.*;
 
 import java.util.ArrayList;
