@@ -189,24 +189,6 @@ public class InspectionDAO {
             return returnInt;
 	}
 
-	public Integer getRoom() {
-		Integer returnInt = null;
-        try{
-            Statement stmt=con.createStatement();
-            String query = "Get room number = "+ getRoom();
-
-            ResultSet rs=stmt.executeQuery(query);
-            while(rs.next()){
-                returnInt = rs.getInt(1);
-            }
-
-            }catch(Exception e){
-                System.out.println(e.toString());
-            }
-
-            return returnInt;
-	}
-
 
 
 }
