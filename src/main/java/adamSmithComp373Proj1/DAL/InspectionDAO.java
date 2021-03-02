@@ -11,7 +11,21 @@ public class InspectionDAO {
 
 
     public int getInspectionID() {
-        return Conn.getInspectionID(this.InspectionID);
+        Integer returnInt = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "get Inspection ID = "+ getInspectionID();
+
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnInt = rs.getInt(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnInt;
     }
     public void addInspectionID(int inspectionID) {
         try{
@@ -34,11 +48,39 @@ public class InspectionDAO {
         return this.Details;
     }
     public int getFacility() {
-        return Conn.getFacility(this.facility);
+        Integer returnInt = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "get Facility = "+ getFacility();
+
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnInt = rs.getInt(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnInt;
     }
 
     public Integer getRoom(){
-        return Conn.getRoom(this.Room);
+        Integer returnInt = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "get useID = "+ getRoom();
+
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnInt = rs.getInt(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnInt;
     }
     public void setRoom(int InspectionID){
         try{
@@ -66,7 +108,7 @@ public class InspectionDAO {
 
         try{
             Statement stmt=con.createStatement();
-            String query = "UPDATE facilities " + "'" +  facility ;
+            String query = "UPDATE facilities " + "'" +  FacilityID ;
             Integer rs=stmt.executeUpdate(query);
             System.out.println("Facility has been updated");
         }catch(Exception e){
@@ -97,7 +139,21 @@ public class InspectionDAO {
     }
 
 	public int getInspectionID(Integer inspectionID) {
-		return 0;
+		Integer returnInt = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "get Inspection ID = "+ getInspectionID();
+
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnInt = rs.getInt(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnInt;
 	}
 
 	public Object addInspectionID(Integer inspectionID) {
@@ -116,11 +172,39 @@ public class InspectionDAO {
 	}
 
 	public int getFacility(Integer inspectionID) {
-		return 0;
+		Integer returnInt = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "get Facility = "+ getFacility();
+
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnInt = rs.getInt(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnInt;
 	}
 
 	public Integer getRoom() {
-		return null;
+		Integer returnInt = null;
+        try{
+            Statement stmt=con.createStatement();
+            String query = "Get room number = "+ getRoom();
+
+            ResultSet rs=stmt.executeQuery(query);
+            while(rs.next()){
+                returnInt = rs.getInt(1);
+            }
+
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            return returnInt;
 	}
 
 
