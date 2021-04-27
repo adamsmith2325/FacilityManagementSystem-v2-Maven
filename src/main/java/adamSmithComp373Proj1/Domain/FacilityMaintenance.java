@@ -3,7 +3,7 @@ import adamSmithComp373Proj1.Domain.*;
 
 enum RequestType {Repair, Cleaning, BrokenItem}
 
-public class FacilityMaintainence extends Facility {
+public class FacilityMaintenance extends Facility {
 
     private Integer RequestID;
     private int mainRequestID;
